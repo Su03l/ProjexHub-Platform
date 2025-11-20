@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { User } from '../App';
-import { TrendingUp, Eye, Heart, Users, FolderGit2, ArrowUpRight, TrendingDown, BarChart3, Activity, Clock, Star, Award, Target } from 'lucide-react';
+import { TrendingUp, Eye, Heart, Users, FolderGit2, ArrowUpRight, TrendingDown, BarChart3, Activity, Clock, Star, Award, Target, ArrowRight } from 'lucide-react';
 
 interface StatsProps {
   user: User;
@@ -8,7 +9,6 @@ interface StatsProps {
 
 const Stats: React.FC<StatsProps> = ({ user }) => {
   
-  // Monthly data for charts
   const monthlyViews = [
     { month: 'يناير', views: 12000, engagement: 8500 },
     { month: 'فبراير', views: 15000, engagement: 10200 },
@@ -18,7 +18,6 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
     { month: 'يونيو', views: 35000, engagement: 24000 },
   ];
 
-  // Project performance
   const projectStats = [
     { name: 'ProjexHub', views: 45000, likes: 1200, growth: '+25%', trend: 'up' },
     { name: 'Suliman OS', views: 38000, likes: 980, growth: '+18%', trend: 'up' },
@@ -27,16 +26,14 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
     { name: 'E-Commerce App', views: 6200, likes: 180, growth: '+8%', trend: 'up' },
   ];
 
-  // Audience demographics
   const audienceData = [
-    { country: 'السعودية', percentage: 45, color: 'bg-blue-600' },
-    { country: 'مصر', percentage: 20, color: 'bg-green-600' },
-    { country: 'الإمارات', percentage: 15, color: 'bg-purple-600' },
-    { country: 'الكويت', percentage: 10, color: 'bg-orange-600' },
-    { country: 'أخرى', percentage: 10, color: 'bg-gray-600' },
+    { country: 'جامعة طيبة', percentage: 45, color: 'bg-blue-600' },
+    { country: 'جامعة الملك سعود', percentage: 20, color: 'bg-blue-600' },
+    { country: 'جامعة الملك عبدالعزيز', percentage: 15, color: 'bg-blue-600' },
+    { country: 'جامعة الإمام محمد بن سعود', percentage: 10, color: 'bg-blue-600' },
+    { country: 'جامعة أم القرى', percentage: 10, color: 'bg-blue-600' },
   ];
 
-  // Achievements
   const achievements = [
     { icon: <Award size={24} />, title: '100k مشاهدة', desc: 'وصلت إلى 100,000 مشاهدة', color: 'bg-yellow-500' },
     { icon: <Star size={24} />, title: 'مشروع مميز', desc: '5 مشاريع حصلت على تقييم ممتاز', color: 'bg-purple-500' },
@@ -50,13 +47,15 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
     <div className="min-h-screen bg-transparent pb-20 relative font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         
-        {/* Header */}
         <div className="mb-8 animate-fade-in-up">
+          <Link to="/dashboard" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors mb-6 font-bold">
+            <ArrowRight size={20} />
+            العودة إلى لوحة التحكم
+          </Link>
           <h1 className="text-4xl font-black text-slate-900 dark:text-white mb-2">الإحصائيات المتقدمة</h1>
           <p className="text-slate-500 dark:text-slate-400">تحليل شامل لأداء مشاريعك وتفاعل الجمهور</p>
         </div>
 
-        {/* Main Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 animate-fade-in-up delay-100">
           {[
             { label: 'إجمالي المشاهدات', value: '100k', change: '+12.5%', icon: <Eye />, color: 'blue', up: true },
@@ -81,10 +80,8 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* Main Content */}
           <div className="lg:col-span-8 space-y-8">
             
-            {/* Monthly Performance Chart */}
             <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-200 dark:border-slate-800 shadow-lg animate-fade-in-up delay-200">
               <div className="flex items-center justify-between mb-8">
                 <div>
@@ -96,7 +93,6 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
                 </div>
               </div>
 
-              {/* Chart */}
               <div className="space-y-6">
                 {monthlyViews.map((data, i) => (
                   <div key={i}>
@@ -122,7 +118,6 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
               </div>
             </div>
 
-            {/* Project Performance */}
             <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-200 dark:border-slate-800 shadow-lg animate-fade-in-up delay-300">
               <div className="mb-6">
                 <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-1">أداء المشاريع</h3>
@@ -149,13 +144,11 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
 
           </div>
 
-          {/* Sidebar */}
           <div className="lg:col-span-4 space-y-8">
             
-            {/* Audience Demographics */}
             <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-200 dark:border-slate-800 shadow-lg animate-fade-in-up delay-200">
               <div className="mb-6">
-                <h3 className="text-xl font-black text-slate-900 dark:text-white mb-1">الجمهور حسب الدولة</h3>
+                <h3 className="text-xl font-black text-slate-900 dark:text-white mb-1">الجمهور حسب الجامعة</h3>
                 <p className="text-slate-500 text-sm">توزيع المشاهدين</p>
               </div>
 
@@ -177,7 +170,6 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
               </div>
             </div>
 
-            {/* Achievements */}
             <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-[2.5rem] p-8 text-white shadow-2xl shadow-blue-600/30 animate-fade-in-up delay-300">
               <div className="mb-6">
                 <h3 className="text-xl font-black mb-1">الإنجازات</h3>
@@ -199,7 +191,6 @@ const Stats: React.FC<StatsProps> = ({ user }) => {
               </div>
             </div>
 
-            {/* Quick Stats */}
             <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-200 dark:border-slate-800 shadow-lg animate-fade-in-up delay-400">
               <div className="mb-6">
                 <h3 className="text-xl font-black text-slate-900 dark:text-white mb-1">إحصائيات سريعة</h3>

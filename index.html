@@ -82,22 +82,20 @@
       body {
         font-family: 'Cairo', sans-serif;
         overflow-x: hidden;
-        /* Ensure body is transparent to let canvas show, assuming App.tsx manages backgrounds */
-        background-color: #f8fafc; /* Fallback slate-50 */
+        background-color: #f8fafc; 
       }
       
       .dark body {
-        background-color: #020617; /* Fallback slate-950 */
+        background-color: #020617; 
       }
-      
-      /* Static Overlay Canvas Background - ONLY FIRST PART (Hero) */
+
       #canvas-bg {
-        position: absolute; /* Changed from fixed to absolute so it scrolls away */
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh; /* Only covers the first screen/hero section */
-        z-index: 0; /* Behind content */
+        height: 100vh;
+        z-index: 0;
         pointer-events: none;
       }
 
@@ -112,13 +110,12 @@
         border: 1px solid rgba(255, 255, 255, 0.05);
       }
       
-      /* Marquee Utility */
       .marquee-container {
         mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
       }
 
-      /* Custom Scrollbar */
+      
       ::-webkit-scrollbar {
         width: 6px;
         height: 6px;
@@ -141,7 +138,6 @@
         color: #000;
       }
 
-      /* Hide Scrollbar but keep functionality for horizontal containers */
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }
@@ -150,7 +146,6 @@
         scrollbar-width: none;
       }
 
-      /* Direction Utilities */
       .ltr { direction: ltr; }
       .rtl { direction: rtl; }
       .direction-ltr { direction: ltr; }
@@ -168,8 +163,7 @@
 </script>
 
 </head>
-  <body class="text-slate-900 dark:text-white transition-colors duration-300 selection:bg-primary-500 selection:text-white relative">
-    <!-- Static Canvas Layer -->
+  <body class="text-slate-900 dark:text-white transition-colors duration-300 relative">
     <canvas id="canvas-bg"></canvas>
     
     <div id="root" class="relative z-10"></div>
@@ -179,9 +173,8 @@
       const ctx = canvas.getContext('2d');
       let width, height;
 
-      // Configuration
       const DOT_SIZE = 1.5;
-      const DOT_SPACING = 25; // Grid spacing
+      const DOT_SPACING = 25;
 
       function draw() {
         width = window.innerWidth;
@@ -191,11 +184,9 @@
         
         ctx.clearRect(0, 0, width, height);
         
-        // Check dark mode to adjust color
         const isDark = document.documentElement.classList.contains('dark');
-        ctx.fillStyle = isDark ? '#334155' : '#cbd5e1'; // Subtler dots
+        ctx.fillStyle = isDark ? '#334155' : '#cbd5e1';
 
-        // Draw static grid
         for (let x = 0; x < width + DOT_SPACING; x += DOT_SPACING) {
           for (let y = 0; y < height + DOT_SPACING; y += DOT_SPACING) {
              ctx.beginPath();
@@ -205,13 +196,10 @@
         }
       }
 
-      // Redraw on resize and theme change (simulated by checking class periodically or just resize)
       window.addEventListener('resize', draw);
       
-      // Initial Draw
       draw();
       
-      // Optional: Watch for dark mode changes if possible, otherwise reload triggers it
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           if (mutation.attributeName === 'class') {

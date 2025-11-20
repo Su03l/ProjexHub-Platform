@@ -53,13 +53,10 @@ const ScrollToTop = () => {
 };
 
 const App: React.FC = () => {
-  // Default to Light Mode (false) unless 'dark' is explicitly saved
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem('theme');
     return saved === 'dark';
   });
-
-  // Auth State
   const [user, setUser] = useState<User | null>(null);
   const [postLoginPath, setPostLoginPath] = useState<string>('/dashboard');
 
@@ -107,11 +104,11 @@ const App: React.FC = () => {
     <Router>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-transparent font-sans text-slate-900 dark:text-white">
-        <Navbar 
-          darkMode={darkMode} 
-          toggleTheme={toggleTheme} 
-          user={user} 
-          onLogout={handleLogout} 
+        <Navbar
+          darkMode={darkMode}
+          toggleTheme={toggleTheme}
+          user={user}
+          onLogout={handleLogout}
         />
         <main className="flex-grow">
           <Routes>
@@ -124,37 +121,37 @@ const App: React.FC = () => {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/report-issue" element={<ReportIssue />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route 
-              path="/signin" 
-              element={user ? <Navigate to={postLoginPath} /> : <SignIn onLogin={handleLogin} />} 
+            <Route
+              path="/signin"
+              element={user ? <Navigate to={postLoginPath} /> : <SignIn onLogin={handleLogin} />}
             />
-            <Route 
-              path="/signup" 
-              element={user ? <Navigate to={postLoginPath} /> : <SignUp onLogin={handleLogin} />} 
+            <Route
+              path="/signup"
+              element={user ? <Navigate to={postLoginPath} /> : <SignUp onLogin={handleLogin} />}
             />
-            <Route 
-              path="/profile" 
-              element={user ? <Profile user={user} /> : <Navigate to="/signin" />} 
+            <Route
+              path="/profile"
+              element={user ? <Profile user={user} /> : <Navigate to="/signin" />}
             />
-            <Route 
-              path="/dashboard" 
-              element={user ? <Dashboard user={user} /> : <Navigate to="/signin" />} 
+            <Route
+              path="/dashboard"
+              element={user ? <Dashboard user={user} /> : <Navigate to="/signin" />}
             />
-            <Route 
-              path="/messages" 
-              element={user ? <Messages user={user} /> : <Navigate to="/signin" />} 
+            <Route
+              path="/messages"
+              element={user ? <Messages user={user} /> : <Navigate to="/signin" />}
             />
-            <Route 
-              path="/settings" 
-              element={user ? <Settings user={user} /> : <Navigate to="/signin" />} 
+            <Route
+              path="/settings"
+              element={user ? <Settings user={user} /> : <Navigate to="/signin" />}
             />
-            <Route 
-              path="/my-projects" 
-              element={user ? <MyProjects user={user} /> : <Navigate to="/signin" />} 
+            <Route
+              path="/dashboard/my-projects"
+              element={user ? <MyProjects user={user} /> : <Navigate to="/signin" />}
             />
-            <Route 
-              path="/stats" 
-              element={user ? <Stats user={user} /> : <Navigate to="/signin" />} 
+            <Route
+              path="/dashboard/stats"
+              element={user ? <Stats user={user} /> : <Navigate to="/signin" />}
             />
           </Routes>
         </main>

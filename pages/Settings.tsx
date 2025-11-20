@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { User } from '../App';
 import { User as UserIcon, Lock, Bell, Shield, Save, Camera, Phone, Twitter, Github, Linkedin, Globe, Plus, Trash2, Link as LinkIcon, AtSign, Briefcase, Code2, X, Eye, EyeOff, Check, Info } from 'lucide-react';
 import ScrollToTop from '../components/ScrollToTop';
+import { useToast } from '../components/ToastContainer';
 
 interface SettingsProps {
   user: User;
@@ -15,6 +16,7 @@ interface CustomLink {
 
 const Settings: React.FC<SettingsProps> = ({ user }) => {
   const [activeSection, setActiveSection] = useState<'account' | 'security' | 'notifications'>('account');
+  const toast = useToast();
   
   // Password visibility states
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -112,6 +114,17 @@ const Settings: React.FC<SettingsProps> = ({ user }) => {
 
   const updateCustomLink = (id: number, field: 'label' | 'url', value: string) => {
     setCustomLinks(customLinks.map(l => l.id === id ? { ...l, [field]: value } : l));
+  };
+
+  const handleSaveProfile = () => {
+    toast.success('تم تحديث الملف الشخصي بنجاح!');
+    // Here you would send data to backend
+  };
+
+  const handleUpdatePassword = () => {
+    toast.success('تم تحديث كلمة المرور بنجاح!');
+    // Here you would send password update to backend
+    setNewPassword('');
   };
 
   const tabs = [
@@ -407,14 +420,14 @@ const Settings: React.FC<SettingsProps> = ({ user }) => {
                               </button>
                            </div>
                         </div>
-                        <button className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold hover:shadow-lg transition-all">تحديث كلمة المرور</button>
+                         <button onClick={handleUpdatePassword} className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold hover:shadow-lg transition-all">تحديث كلمة المرور</button>
                      </div>
                  )}
 
                  {/* Save Button Area */}
                  <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-4">
                     <button className="px-6 py-3 rounded-xl font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">إلغاء</button>
-                    <button className="px-8 py-3 bg-primary-600 text-white rounded-xl font-bold shadow-lg shadow-primary-600/30 hover:scale-105 transition-all flex items-center gap-2"><Save size={18} /> حفظ التغييرات</button>
+                     <button onClick={handleSaveProfile} className="px-8 py-3 bg-primary-600 text-white rounded-xl font-bold shadow-lg shadow-primary-600/30 hover:scale-105 transition-all flex items-center gap-2"><Save size={18} /> حفظ التغييرات</button>
                  </div>
               </div>
            </div>

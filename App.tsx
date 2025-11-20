@@ -7,7 +7,8 @@ import BrowseProjects from './pages/BrowseProjects';
 import UploadProject from './pages/UploadProject';
 import Competition from './pages/Competition';
 import ProjectDetails from './pages/ProjectDetails';
-import Auth from './pages/Auth';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
@@ -123,11 +124,11 @@ const App: React.FC = () => {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route 
               path="/signin" 
-              element={user ? <Navigate to={postLoginPath} /> : <Auth onLogin={handleLogin} />} 
+              element={user ? <Navigate to={postLoginPath} /> : <SignIn onLogin={handleLogin} />} 
             />
             <Route 
               path="/signup" 
-              element={user ? <Navigate to={postLoginPath} /> : <Auth onLogin={handleLogin} />} 
+              element={user ? <Navigate to={postLoginPath} /> : <SignUp onLogin={handleLogin} />} 
             />
             <Route 
               path="/profile" 

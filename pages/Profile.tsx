@@ -101,7 +101,7 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
                {/* Stats Row */}
                <div className="flex gap-6 pt-3 pb-2">
                   <div className="flex gap-1 hover:underline cursor-pointer">
-                     <span className="font-black text-slate-900 dark:text-white">999</span>
+                     <span className="font-black text-slate-900 dark:text-white">1</span>
                      <span className="text-slate-500">متابع</span>
                   </div>
                   <div className="flex gap-1 hover:underline cursor-pointer">

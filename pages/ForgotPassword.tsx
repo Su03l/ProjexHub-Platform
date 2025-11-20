@@ -102,7 +102,7 @@ const ForgotPassword: React.FC = () => {
             يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة.
           </p>
           <Link
-            to="/auth"
+            to="/signin"
             className="block w-full py-3.5 bg-primary-600 text-white rounded-2xl font-bold hover:bg-primary-700 transition-all shadow-lg shadow-primary-600/20"
           >
             تسجيل الدخول
@@ -169,7 +169,7 @@ const ForgotPassword: React.FC = () => {
 
               <div className="text-center">
                 <Link
-                  to="/auth"
+                  to="/signin"
                   className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary-600 transition-colors"
                 >
                   <ArrowRight size={16} />

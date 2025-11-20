@@ -97,7 +97,7 @@ const App: React.FC = () => {
 
   const handleLogout = () => {
     setUser(null);
-    setPostLoginPath('/auth');
+    setPostLoginPath('/signin');
   };
 
   return (
@@ -113,8 +113,8 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/browse" element={<BrowseProjects />} />
-            <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="/projects" element={<BrowseProjects />} />
+            <Route path="/projects/:slug" element={<ProjectDetails />} />
             <Route path="/upload" element={<UploadProject />} />
             <Route path="/competition" element={<Competition />} />
             <Route path="/contact" element={<Contact />} />
@@ -122,24 +122,28 @@ const App: React.FC = () => {
             <Route path="/report-issue" element={<ReportIssue />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route 
-              path="/auth" 
+              path="/signin" 
+              element={user ? <Navigate to={postLoginPath} /> : <Auth onLogin={handleLogin} />} 
+            />
+            <Route 
+              path="/signup" 
               element={user ? <Navigate to={postLoginPath} /> : <Auth onLogin={handleLogin} />} 
             />
             <Route 
               path="/profile" 
-              element={user ? <Profile user={user} /> : <Navigate to="/auth" />} 
+              element={user ? <Profile user={user} /> : <Navigate to="/signin" />} 
             />
             <Route 
               path="/dashboard" 
-              element={user ? <Dashboard user={user} /> : <Navigate to="/auth" />} 
+              element={user ? <Dashboard user={user} /> : <Navigate to="/signin" />} 
             />
             <Route 
               path="/messages" 
-              element={user ? <Messages user={user} /> : <Navigate to="/auth" />} 
+              element={user ? <Messages user={user} /> : <Navigate to="/signin" />} 
             />
             <Route 
               path="/settings" 
-              element={user ? <Settings user={user} /> : <Navigate to="/auth" />} 
+              element={user ? <Settings user={user} /> : <Navigate to="/signin" />} 
             />
           </Routes>
         </main>

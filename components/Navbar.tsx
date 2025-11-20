@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, user, onLogout }
 
   const navLinks = [
     { name: 'الرئيسية', path: '/' },
-    { name: 'تصفح المشاريع', path: '/browse' },
+    { name: 'تصفح المشاريع', path: '/projects' },
     { name: 'رفع مشروع', path: '/upload' },
     { name: 'المسابقة', path: '/competition' },
   ];
@@ -160,13 +160,12 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, user, onLogout }
               </div>
             ) : (
               <>
-                <Link to="/auth">
-                  <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
-                    <LogIn size={18} />
+                <Link to="/signin">
+                  <button className="px-6 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
                     تسجيل الدخول
                   </button>
                 </Link>
-                <Link to="/auth?mode=signup">
+                <Link to="/signup">
                   <button className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white rounded-xl text-sm font-bold shadow-lg shadow-primary-600/30 transition-all hover:scale-105 hover:shadow-primary-600/40">
                     إنشاء حساب
                   </button>
@@ -233,10 +232,10 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleTheme, user, onLogout }
                  </>
               ) : (
                 <div className="grid grid-cols-2 gap-3">
-                  <Link to="/auth" onClick={() => setIsOpen(false)} className="flex items-center justify-center py-3 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-bold">
+                  <Link to="/signin" onClick={() => setIsOpen(false)} className="flex items-center justify-center py-3 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-700 dark:text-slate-200 font-bold">
                     تسجيل الدخول
                   </Link>
-                  <Link to="/auth?mode=signup" onClick={() => setIsOpen(false)} className="flex items-center justify-center py-3 bg-primary-600 text-white rounded-xl font-bold shadow-lg">
+                  <Link to="/signup" onClick={() => setIsOpen(false)} className="flex items-center justify-center py-3 bg-primary-600 text-white rounded-xl font-bold shadow-lg">
                     إنشاء حساب
                   </Link>
                 </div>

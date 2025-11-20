@@ -174,7 +174,7 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
 
                         {/* Project Body */}
                         <div className="pr-14">
-                           <Link to={`/project/${project.id}`}>
+                           <Link to={`/projects/${project.slug}`}>
                               <p className="text-slate-800 dark:text-slate-200 mb-4 font-medium leading-relaxed">
                                  {project.title} - {project.description}
                               </p>

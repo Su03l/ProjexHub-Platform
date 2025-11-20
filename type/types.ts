@@ -1,5 +1,6 @@
 export interface Project {
   id: string;
+  slug: string; // URL-friendly version of the title
   title: string;
   description: string;
   longDescription?: string;

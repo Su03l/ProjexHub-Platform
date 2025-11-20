@@ -10,19 +10,19 @@ import {
 } from 'lucide-react';
 
 const ProjectDetails: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const [project, setProject] = useState<Project | null>(null);
   const [activeImage, setActiveImage] = useState<string>('');
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    const found = MOCK_PROJECTS.find(p => p.id === id);
+    const found = MOCK_PROJECTS.find(p => p.slug === slug);
     if (found) {
       setProject(found);
       setActiveImage(found.thumbnail || '');
     }
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [slug]);
 
   if (!project) return null;
 
@@ -44,7 +44,7 @@ const ProjectDetails: React.FC = () => {
             <div className="flex items-center gap-2 text-sm font-bold text-slate-500 mb-6">
                <Link to="/" className="hover:text-primary-600 transition-colors">الرئيسية</Link>
                <ChevronRight size={14} />
-               <Link to="/browse" className="hover:text-primary-600 transition-colors">المشاريع</Link>
+               <Link to="/projects" className="hover:text-primary-600 transition-colors">المشاريع</Link>
                <ChevronRight size={14} />
                <span className="text-slate-900 dark:text-white">{project.title}</span>
             </div>

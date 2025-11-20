@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Mail, Lock, ArrowRight, GraduationCap, Code, Activity, Building2, Eye, EyeOff, Phone, Twitter, Check, Info, Sparkles, Briefcase, ChevronDown } from 'lucide-react';
 import { SAUDI_UNIVERSITIES, TECH_MAJORS, GRADUATION_YEARS } from '../type/constants';
 
@@ -8,7 +8,7 @@ interface AuthProps {
 }
 
 const Auth: React.FC<AuthProps> = ({ onLogin }) => {
-  const [searchParams] = useSearchParams();
+  const location = useLocation();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -18,12 +18,9 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
   const [twitterHandle, setTwitterHandle] = useState('');
 
   useEffect(() => {
-    if (searchParams.get('mode') === 'signup') {
-      setIsLogin(false);
-    } else {
-      setIsLogin(true);
-    }
-  }, [searchParams]);
+    // Check the current path to determine if showing login or signup
+    setIsLogin(location.pathname === '/signin');
+  }, [location.pathname]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -296,18 +293,17 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
                 </button>
              </form>
 
-             <div className="text-center mt-8">
-               <p className="text-slate-500 dark:text-slate-400 font-medium">
-                 {isLogin ? 'ليس لديك حساب؟' : 'لديك حساب بالفعل؟'}
-                 <button 
-                   type="button"
-                   onClick={() => setIsLogin(!isLogin)} 
-                   className="text-primary-600 font-bold hover:underline mr-1 px-2 py-1 rounded hover:bg-primary-50 dark:hover:bg-slate-800 transition-colors"
-                 >
-                   {isLogin ? 'إنشاء حساب جديد' : 'تسجيل الدخول'}
-                 </button>
-               </p>
-            </div>
+              <div className="text-center mt-8">
+                <p className="text-slate-500 dark:text-slate-400 font-medium">
+                  {isLogin ? 'ليس لديك حساب؟' : 'لديك حساب بالفعل؟'}
+                  <Link 
+                    to={isLogin ? '/signup' : '/signin'}
+                    className="text-primary-600 font-bold hover:underline mr-1 px-2 py-1 rounded hover:bg-primary-50 dark:hover:bg-slate-800 transition-colors"
+                  >
+                    {isLogin ? 'إنشاء حساب جديد' : 'تسجيل الدخول'}
+                  </Link>
+                </p>
+             </div>
 
            </div>
         </div>
@@ -317,3 +313,4 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
 };
 
 export default Auth;
+```

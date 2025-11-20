@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-slate-900 dark:text-white mb-4">روابط سريعة</h3>
             <ul className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
               <li><Link to="/" className="hover:text-primary-600 transition-colors">الرئيسية</Link></li>
-              <li><Link to="/browse" className="hover:text-primary-600 transition-colors">تصفح المشاريع</Link></li>
+              <li><Link to="/projects" className="hover:text-primary-600 transition-colors">تصفح المشاريع</Link></li>
               <li><Link to="/upload" className="hover:text-primary-600 transition-colors">رفع مشروع</Link></li>
               <li><Link to="/competition" className="hover:text-primary-600 transition-colors">المسابقة</Link></li>
             </ul>
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
               <li><Link to="/contact" className="hover:text-primary-600 transition-colors">تواصل معنا</Link></li>
               <li><Link to="/faq" className="hover:text-primary-600 transition-colors">الأسئلة الشائعة</Link></li>
               <li><Link to="/report-issue" className="hover:text-primary-600 transition-colors">بلاغ عن مشكلة</Link></li>
-              <li><Link to="/auth?mode=signup" className="hover:text-primary-600 transition-colors">إنشاء حساب</Link></li>
+              <li><Link to="/signup" className="hover:text-primary-600 transition-colors">إنشاء حساب</Link></li>
             </ul>
           </div>
 

@@ -107,11 +107,11 @@ const Home: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300 w-full sm:w-auto">
-               <Link to="/auth?mode=signup" className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-3 shadow-xl shadow-slate-900/10 dark:shadow-white/10">
+               <Link to="/signup" className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-3 shadow-xl shadow-slate-900/10 dark:shadow-white/10">
                  <Rocket size={20} />
                  ابدأ رحلتك الآن
                </Link>
-               <Link to="/browse" className="px-8 py-4 bg-white dark:bg-slate-900 text-slate-700 dark:text-white border border-slate-200 dark:border-slate-800 rounded-2xl font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-3">
+               <Link to="/projects" className="px-8 py-4 bg-white dark:bg-slate-900 text-slate-700 dark:text-white border border-slate-200 dark:border-slate-800 rounded-2xl font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-3">
                  <Search size={20} />
                  تصفح المشاريع
                </Link>
@@ -201,7 +201,7 @@ const Home: React.FC = () => {
             </div>
             
             <div className="text-center mt-16">
-               <Link to="/auth?mode=signup" className="inline-flex items-center gap-2 text-white font-bold hover:gap-4 transition-all bg-primary-600 hover:bg-primary-700 px-8 py-4 rounded-2xl shadow-lg shadow-primary-600/30">
+               <Link to="/signup" className="inline-flex items-center gap-2 text-white font-bold hover:gap-4 transition-all bg-primary-600 hover:bg-primary-700 px-8 py-4 rounded-2xl shadow-lg shadow-primary-600/30">
                   ابدأ التسجيل مجاناً <ArrowRight size={20} />
                </Link>
             </div>
@@ -448,7 +448,7 @@ const Home: React.FC = () => {
             <p className="text-slate-300 text-xl mb-10 leading-relaxed">
                انضم لأكثر من 5,000 طالب يشاركون إبداعاتهم الآن.
             </p>
-            <Link to="/auth?mode=signup" className="inline-flex px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-2xl font-bold text-lg shadow-lg shadow-primary-500/30 hover:scale-105 transition-all">
+            <Link to="/signup" className="inline-flex px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-2xl font-bold text-lg shadow-lg shadow-primary-500/30 hover:scale-105 transition-all">
                سجل الآن مجاناً
             </Link>
          </div>

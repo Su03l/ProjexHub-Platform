@@ -67,6 +67,7 @@ export const GRADUATION_YEARS = Array.from({ length: 31 }, (_, i) => (2030 - i).
 export const MOCK_PROJECTS: Project[] = [
   {
     id: '1',
+    slug: 'projexhub-platform',
     title: 'ProjexHub - منصة تبادل المشاريع',
     description: 'المنصة الأولى لتوثيق وإبراز مشاريع التخرج الجامعية في المملكة العربية السعودية.',
     longDescription: 'منصة متكاملة تهدف إلى جمع مشاريع التخرج للطلاب في مكان واحد، مما يسهل عملية البحث، التوثيق، والتواصل بين الطلاب، المشرفين، والشركات. تدعم المنصة ميزات متقدمة مثل الدردشة، لوحة التحكم، والمسابقات.',
@@ -84,6 +85,7 @@ export const MOCK_PROJECTS: Project[] = [
   },
   {
     id: '2',
+    slug: 'suliman-os-portfolio',
     title: 'Suliman OS - Windows Style Portfolio',
     description: 'موقع شخصي تفاعلي يحاكي نظام تشغيل ويندوز، يعرض المهارات والمشاريع بأسلوب مبتكر.',
     longDescription: 'تجربة مستخدم فريدة من نوعها تحول السيرة الذاتية التقليدية إلى سطح مكتب تفاعلي. يمكن للمستخدم فتح النوافذ، تصفح الملفات، وتشغيل التطبيقات المصغرة داخل المتصفح.',
@@ -102,6 +104,7 @@ export const MOCK_PROJECTS: Project[] = [
   },
   {
     id: '3',
+    slug: 'generate-cards',
     title: 'Generate Cards',
     description: 'A web application to create, customize, and share digital business cards.',
     longDescription: 'تطبيق ويب متطور يسمح للمستخدمين بإنشاء بطاقات عمل رقمية قابلة للتخصيص بالكامل. يوفر خيارات متعددة للألوان، الخطوط، وتخطيطات التصميم، مع إمكانية مشاركة البطاقة عبر رابط مباشر أو QR Code.',
@@ -120,6 +123,7 @@ export const MOCK_PROJECTS: Project[] = [
   },
   {
     id: '4',
+    slug: 'educational-platform',
     title: 'Educational Platform',
     description: 'An educational platform that brings together the best programming tutorials from YouTube in one place.',
     longDescription: 'منصة تعليمية تهدف إلى تبسيط رحلة التعلم للمطورين من خلال تجميع وتصنيف أفضل الشروحات البرمجية من يوتيوب. توفر المنصة مسارات تعلم منظمة وواجهة مستخدم خالية من المشتتات.',
@@ -138,6 +142,7 @@ export const MOCK_PROJECTS: Project[] = [
   },
   {
     id: '5',
+    slug: 'cinemax-platform',
     title: 'CineMax Platform',
     description: 'CineMax is a modern cinema website for browsing movies and booking tickets online.',
     longDescription: 'منصة سينمائية حديثة تتيح للمستخدمين استعراض أحدث الأفلام، مشاهدة العروض التشويقية، وحجز التذاكر عبر الإنترنت. تتميز بتصميم عصري وتجربة حجز سلسة.',

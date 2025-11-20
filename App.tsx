@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -73,7 +73,6 @@ const App: React.FC = () => {
   const toggleTheme = () => setDarkMode(!darkMode);
 
   const handleLogin = (destination: string = '/dashboard') => {
-    // Simulate a login with rich data
     setUser({
       name: 'سليمان يوسف',
       email: 'sulaiman@example.com',
@@ -104,7 +103,6 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      {/* Main wrapper is transparent to let index.html canvas show through */}
       <div className="flex flex-col min-h-screen bg-transparent font-sans text-slate-900 dark:text-white">
         <Navbar 
           darkMode={darkMode} 

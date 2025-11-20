@@ -1,6 +1,6 @@
 # ProjexHub (بروجيكس هب)
 <div align="center">
-<img src="assets/projexhub.png" alt="ProjexHub" width="400" height="400">
+<img src="assets/projexhub.png" alt="ProjexHub" >
 </div>
 
 **ProjexHub** هو منصة مجتمعية تقنية متكاملة صممت لتكون الوجهة الأولى للمطورين والمبدعين لعرض مشاريعهم، تبادل المعرفة، وبناء شبكة علاقات مهنية قوية. يجمع المشروع بين التصميم العصري والأداء العالي لتوفير تجربة مستخدم استثنائية.

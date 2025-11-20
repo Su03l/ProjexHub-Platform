@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProjexHub | منصة تبادل مشاريع التخرج الجامعية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/logo1.png">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Cairo', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+                950: '#172554',
+              }
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 3s infinite',
+              'scroll-x': 'scrollX 40s linear infinite',
+              'scroll-x-reverse': 'scrollXReverse 40s linear infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slow': 'spin 12s linear infinite',
+              'zoom-in': 'zoomIn 0.3s ease-out forwards',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              zoomIn: {
+                '0%': { opacity: '0', transform: 'scale(0.9)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-15px)' },
+              },
+              scrollX: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(100%)' },
+              },
+              scrollXReverse: {
+                 '0%': { transform: 'translateX(0)' },
+                 '100%': { transform: 'translateX(-100%)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Cairo', sans-serif;
+        overflow-x: hidden;
+        /* Ensure body is transparent to let canvas show, assuming App.tsx manages backgrounds */
+        background-color: #f8fafc; /* Fallback slate-50 */
+      }
+      
+      .dark body {
+        background-color: #020617; /* Fallback slate-950 */
+      }
+      
+      /* Static Overlay Canvas Background - ONLY FIRST PART (Hero) */
+      #canvas-bg {
+        position: absolute; /* Changed from fixed to absolute so it scrolls away */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Only covers the first screen/hero section */
+        z-index: 0; /* Behind content */
+        pointer-events: none;
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      .dark .glass-panel {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Marquee Utility */
+      .marquee-container {
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #334155;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+
+      /* Hide Scrollbar but keep functionality for horizontal containers */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Direction Utilities */
+      .ltr { direction: ltr; }
+      .rtl { direction: rtl; }
+      .direction-ltr { direction: ltr; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6"
+  }
+}
+</script>
+
+</head>
+  <body class="text-slate-900 dark:text-white transition-colors duration-300 selection:bg-primary-500 selection:text-white relative">
+    <!-- Static Canvas Layer -->
+    <canvas id="canvas-bg"></canvas>
+    
+    <div id="root" class="relative z-10"></div>
+    
+    <script>
+      const canvas = document.getElementById('canvas-bg');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+
+      // Configuration
+      const DOT_SIZE = 1.5;
+      const DOT_SPACING = 25; // Grid spacing
+
+      function draw() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        
+        ctx.clearRect(0, 0, width, height);
+        
+        // Check dark mode to adjust color
+        const isDark = document.documentElement.classList.contains('dark');
+        ctx.fillStyle = isDark ? '#334155' : '#cbd5e1'; // Subtler dots
+
+        // Draw static grid
+        for (let x = 0; x < width + DOT_SPACING; x += DOT_SPACING) {
+          for (let y = 0; y < height + DOT_SPACING; y += DOT_SPACING) {
+             ctx.beginPath();
+             ctx.arc(x, y, DOT_SIZE, 0, Math.PI * 2);
+             ctx.fill();
+          }
+        }
+      }
+
+      // Redraw on resize and theme change (simulated by checking class periodically or just resize)
+      window.addEventListener('resize', draw);
+      
+      // Initial Draw
+      draw();
+      
+      // Optional: Watch for dark mode changes if possible, otherwise reload triggers it
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'class') {
+            draw();
+          }
+        });
+      });
+      observer.observe(document.documentElement, { attributes: true });
+
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

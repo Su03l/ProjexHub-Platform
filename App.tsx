@@ -17,6 +17,8 @@ import Contact from './pages/Contact';
 import FAQ from './pages/FAQ';
 import ReportIssue from './pages/ReportIssue';
 import ForgotPassword from './pages/ForgotPassword';
+import MyProjects from './pages/MyProjects';
+import Stats from './pages/Stats';
 import { User as UserIcon } from 'lucide-react';
 import avatar from './assets/suliman.jpg';
 
@@ -145,6 +147,14 @@ const App: React.FC = () => {
             <Route 
               path="/settings" 
               element={user ? <Settings user={user} /> : <Navigate to="/signin" />} 
+            />
+            <Route 
+              path="/my-projects" 
+              element={user ? <MyProjects user={user} /> : <Navigate to="/signin" />} 
+            />
+            <Route 
+              path="/stats" 
+              element={user ? <Stats user={user} /> : <Navigate to="/signin" />} 
             />
           </Routes>
         </main>

@@ -1,10 +1,13 @@
 
+
 import React, { useState } from 'react';
 import { UploadCloud, Plus, X, ChevronLeft, Check, FileText, Layers, Image as ImageIcon, CheckCircle2, Tag, Cpu, Link as LinkIcon, Github, Globe, Youtube, Trash2, File } from 'lucide-react';
 import { SAUDI_UNIVERSITIES, TECH_MAJORS, GRADUATION_YEARS } from '../type/constants';
+import { useToast } from '../components/ToastContainer';
 
 const UploadProject: React.FC = () => {
   const [step, setStep] = useState(1);
+  const toast = useToast();
   
   // Form States
   const [basicInfo, setBasicInfo] = useState({
@@ -80,6 +83,15 @@ const UploadProject: React.FC = () => {
     const newFiles = [...media.files];
     newFiles.splice(index, 1);
     setMedia({ ...media, files: newFiles });
+  };
+
+  const handlePublish = () => {
+    toast.success('تم نشر المشروع بنجاح! سيتم مراجعته قريباً');
+    // Here you would typically send data to backend
+    setTimeout(() => {
+      setStep(1);
+      // Reset form or redirect
+    }, 2000);
   };
 
 
@@ -451,7 +463,7 @@ const UploadProject: React.FC = () => {
              {step > 1 ? (
                <button onClick={() => setStep(step - 1)} className="px-6 py-3 rounded-xl font-bold text-slate-500 hover:bg-white dark:hover:bg-slate-800 transition-all">السابق</button>
              ) : <div></div>}
-             <button onClick={() => step < 5 ? setStep(step + 1) : console.log('submit')} className="px-8 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold shadow-lg shadow-primary-600/20 flex items-center gap-2 transition-all hover:scale-105">
+             <button onClick={() => step < 5 ? setStep(step + 1) : handlePublish()} className="px-8 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-bold shadow-lg shadow-primary-600/20 flex items-center gap-2 transition-all hover:scale-105">
                {step === 5 ? 'نشر المشروع' : 'التالي'} {step < 5 && <ChevronLeft size={18} />}
              </button>
           </div>

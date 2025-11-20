@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Lock, ArrowRight, Activity, Eye, EyeOff, Sparkles } from 'lucide-react';
+import { useToast } from '../components/ToastContainer';
 
 interface SignInProps {
   onLogin: (destination: string) => void;
@@ -9,16 +10,21 @@ interface SignInProps {
 const SignIn: React.FC<SignInProps> = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
+  const toast = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    toast.success('تم تسجيل الدخول بنجاح! مرحباً بك في ProjexHub');
     setTimeout(() => {
       onLogin('/dashboard');
     }, 500);
   };
 
   const handleSocialLogin = () => {
-    onLogin('/dashboard');
+    toast.success('تم تسجيل الدخول بنجاح!');
+    setTimeout(() => {
+      onLogin('/dashboard');
+    }, 1000);
   };
 
   return (

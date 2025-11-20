@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Lock, ArrowRight, Code, Building2, Eye, EyeOff, Phone, Check, Info, Sparkles, Briefcase, ChevronDown } from 'lucide-react';
 import { SAUDI_UNIVERSITIES, TECH_MAJORS } from '../type/constants';
+import { useToast } from '../components/ToastContainer';
 
 interface SignUpProps {
   onLogin: (destination: string) => void;
@@ -13,16 +14,21 @@ const SignUp: React.FC<SignUpProps> = ({ onLogin }) => {
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [password, setPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const toast = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    toast.success('تم إنشاء الحساب بنجاح! مرحباً بك في مجتمع ProjexHub');
     setTimeout(() => {
       onLogin('/settings');
     }, 500);
   };
 
   const handleSocialLogin = () => {
-    onLogin('/settings');
+    toast.success('تم إنشاء الحساب بنجاح!');
+    setTimeout(() => {
+      onLogin('/settings');
+    }, 1000);
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {

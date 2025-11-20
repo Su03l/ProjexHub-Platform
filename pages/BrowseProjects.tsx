@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { MOCK_PROJECTS, SAUDI_UNIVERSITIES, TECH_MAJORS } from '../type/constants';
 import { Search, Eye, Tag, X, Filter, RotateCcw } from 'lucide-react';
+import ScrollToTop from '../components/ScrollToTop';
 
 const BrowseProjects: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -190,6 +191,7 @@ const BrowseProjects: React.FC = () => {
            </div>
         )}
       </div>
+      <ScrollToTop />
     </div>
   );
 };

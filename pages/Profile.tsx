@@ -4,6 +4,7 @@ import { MOCK_PROJECTS } from '../type/constants';
 import { MapPin, Calendar, Link as LinkIcon, Mail, Heart, Eye, Award, CheckCircle2, Github, Linkedin, Globe, Code2, Share2, MoreHorizontal, Edit3, MessageSquare, GitCommit, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import header from '../assets/header.jpg';
+import ScrollToTop from '../components/ScrollToTop';
 
 interface ProfileProps {
   user: User;
@@ -324,7 +325,7 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
 
          </div>
       </div>
-
+      <ScrollToTop />
     </div>
   );
 };

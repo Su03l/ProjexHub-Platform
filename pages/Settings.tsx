@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { User } from '../App';
 import { User as UserIcon, Lock, Bell, Shield, Save, Camera, Phone, Twitter, Github, Linkedin, Globe, Plus, Trash2, Link as LinkIcon, AtSign, Briefcase, Code2, X, Eye, EyeOff, Check, Info } from 'lucide-react';
+import ScrollToTop from '../components/ScrollToTop';
 
 interface SettingsProps {
   user: User;
@@ -419,6 +420,7 @@ const Settings: React.FC<SettingsProps> = ({ user }) => {
            </div>
         </div>
       </div>
+      <ScrollToTop />
     </div>
   );
 };

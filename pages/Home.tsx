@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, ArrowRight, Globe, Zap, Shield, Layers, Rocket, Sparkles, GraduationCap, Briefcase, Users, Check, ChevronDown, Building2, Lightbulb, Share2, Award, Quote, User, Target, Lock, FileCode, Upload as UploadIcon } from 'lucide-react';
+import ScrollToTop from '../components/ScrollToTop';
 import { SAUDI_UNIVERSITIES } from '../type/constants';
 
 const Home: React.FC = () => {
@@ -84,7 +85,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center">
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-8 animate-fade-in-up cursor-default hover:border-primary-500/30 transition-colors shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 -mt-8 md:mt-0 mb-32 md:mb-8 animate-fade-in-up cursor-default hover:border-primary-500/30 transition-colors shadow-sm">
               <span className="flex h-2 w-2 rounded-full bg-primary-500 animate-pulse"></span>
               <span className="text-sm font-bold text-slate-600 dark:text-slate-300">المنصة الأولى لمشاريع التخرج في المملكة</span>
             </div>
@@ -452,6 +453,8 @@ const Home: React.FC = () => {
             </Link>
          </div>
       </section>
+
+      <ScrollToTop />
 
     </div>
   );

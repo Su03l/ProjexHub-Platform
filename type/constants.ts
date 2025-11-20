@@ -80,7 +80,8 @@ export const MOCK_PROJECTS: Project[] = [
     tags: ['React', 'TypeScript', 'TailwindCSS', 'Vite', 'Node.js'],
     badge: { text: 'إبداعي', color: 'blue' },
     thumbnail: ProjexHub,
-    demoUrl: 'https://projexhub.sa',
+    demoUrl: 'https://projexhub.vercel.app/',
+    sourceUrl: 'https://github.com/Su03l/ProjexHub-Platform',
     comments: []
   },
   {
